@@ -1,0 +1,22 @@
+{
+  "name": "webapp-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamueleMaka/webapp-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamueleMaka/webapp-express/issues"
+  },
+  "homepage": "https://github.com/SamueleMaka/webapp-express#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
