@@ -14,7 +14,7 @@ function index(req,res) {
 function show(req, res) {
     const currMovie = req.params.id;
     const sqlMovie = 'SELECT * FROM movies.movies WHERE id = ?';
-    const sqlReview = 'SELECT * FROM movies.reviews WHERE id = ?';
+    const sqlReview = 'SELECT * FROM movies.reviews WHERE movie_id = ?';
     let movieDetails
     connection.query(sqlMovie, [currMovie], (error, movieResults) => {
       if (error) {
@@ -45,4 +45,20 @@ function show(req, res) {
     
 }
 
-module.exports = {index, show}
+function store(req, res){
+  const currRev = req.params
+  const {movie_id , name, vote, text} = req.body
+  const sqlUserRev = 'INSERT INTO movies.reviews (movie_id , name, vote, text) VALUES (?, ?, ?, ?)'
+
+  connection.execute(sqlUserRev, [movie_id , name, vote, text], (error, result) => {
+    if(error){
+      return (
+        res.status(500).send("errore nel server")
+      )
+    }
+    res.status(201).json({ message: "Recensione aggiunta", id: result.insertId });
+  })
+  
+}
+
+module.exports = {index, show, store} 
